@@ -42,8 +42,9 @@ class _LiveStreamingState extends State<LiveStreaming> {
     bool _isPlaying = true;
     final VlcPlayerController videoPlayerController =
         VlcPlayerController.network(
-      'https://media.w3.org/2010/05/sintel/trailer.mp4',
+      // 'https://media.w3.org/2010/05/sintel/trailer.mp4',
       // 'rtsp://wowzaec2demo.streamlock.net/vod/mp4:BigBuckBunny_115k.mp4',
+      "rtsp://gkamath:mywyzecam@192.168.1.19/live",
       hwAcc: HwAcc.full,
       autoPlay: true,
       options: VlcPlayerOptions(),
@@ -98,6 +99,8 @@ class _LiveStreamingState extends State<LiveStreaming> {
           Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
+          Spacer(),
+          Spacer(),
           VlcPlayer(
             controller: videoPlayerController,
             aspectRatio: 16 / 9,
@@ -105,44 +108,47 @@ class _LiveStreamingState extends State<LiveStreaming> {
               child: CircularProgressIndicator(),
             ),
           ),
-          Row(
-            children: [
-              TextButton(
-                  onPressed: () {},
-                  child: const Icon(
-                    Icons.fast_rewind,
-                    size: 28,
-                    color: Colors.black,
-                  )),
-              TextButton(
-                  onPressed: () {
-                    if (_isPlaying) {
-                      setState(() {
-                        _isPlaying = false;
-                      });
-                      videoPlayerController.pause();
-                    } else {
-                      setState(() {
-                        _isPlaying = true;
-                      });
-                      videoPlayerController.play();
-                    }
-                  },
-                  child: const Icon(
-                    Icons.pause,
-                    // isPlaying ? Icons.pause : Icons.play_arrow,
-                    size: 28,
-                    color: Colors.black,
-                  )),
-              TextButton(
-                  onPressed: () {},
-                  child: const Icon(
-                    Icons.fast_forward,
-                    size: 28,
-                    color: Colors.black,
-                  )),
-            ],
-          ),
+          Spacer(),
+          Spacer(),
+          Spacer(),
+          // Row(
+          //   children: [
+          //     TextButton(
+          //         onPressed: () {},
+          //         child: const Icon(
+          //           Icons.fast_rewind,
+          //           size: 28,
+          //           color: Colors.black,
+          //         )),
+          //     TextButton(
+          //         onPressed: () {
+          //           if (_isPlaying) {
+          //             setState(() {
+          //               _isPlaying = false;
+          //             });
+          //             videoPlayerController.pause();
+          //           } else {
+          //             setState(() {
+          //               _isPlaying = true;
+          //             });
+          //             videoPlayerController.play();
+          //           }
+          //         },
+          //         child: const Icon(
+          //           Icons.pause,
+          //           // isPlaying ? Icons.pause : Icons.play_arrow,
+          //           size: 28,
+          //           color: Colors.black,
+          //         )),
+          //     TextButton(
+          //         onPressed: () {},
+          //         child: const Icon(
+          //           Icons.fast_forward,
+          //           size: 28,
+          //           color: Colors.black,
+          //         )),
+          //   ],
+          // ),
         ],
       ),
     );
